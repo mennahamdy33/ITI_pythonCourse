@@ -69,15 +69,3 @@ class Person:
         else:
             print("number of meals must be integer")
 
-
-# e = Person("menna")
-# e.money = 100
-# print(e.money)
-# e.buy(3)
-# print(e.money)
-# e.eat(3)
-# print(e.healthRate)
-# e.eat(0)
-# print(e.healthRate)
-# e.eat(77)
-# print(e.healthRate)

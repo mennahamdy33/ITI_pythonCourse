@@ -13,6 +13,8 @@ class Employee(person.Person):
         self.car = car
         self.email = email
         self.distanceToWork = distanceToWork
+        self.__salary = 0
+
 
     @property
     def salary(self):
@@ -20,8 +22,9 @@ class Employee(person.Person):
 
     @salary.setter
     def salary(self, val):
+        self.__salary = 1000
         if isinstance(val, int):
-            self.__salary = 1000
+
             if val > 1000:
                 self.__salary = val
         else:
@@ -83,14 +86,3 @@ class Employee(person.Person):
                 email.write(message)
 
 
-Samy = Employee("Samy", "fiat 128", "samy@gmail.com", 100)
-print(Samy.car)
-Samy.salary = -100
-print(Samy.salary)
-print(Samy.id)
-Samy.distanceToWork = -100
-print(Samy.distanceToWork)
-print(Employee.id)
-Samy.work(10)
-print(Samy.mood)
-Samy.send_mail("to@g.com", "subject2", "msfsdfsfs\nrsfsfsfsefsef ffe", "receiver_name")
