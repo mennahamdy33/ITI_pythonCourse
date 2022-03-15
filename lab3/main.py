@@ -1,5 +1,6 @@
 from Employee import Employee
-
+from office import Office
+from car import Car
 Samy = Employee("Samy", "fiat 128", "samy@gmail.com", 100)
 print("Samy's car: ",Samy.car)
 
@@ -28,3 +29,9 @@ print("if samy eats 3 meals,his heath rate:",Samy.healthRate,"%")
 Samy.eat(0)
 
 Samy.send_mail("ahmed@gmail.com", "alert", "There is an important meeting today after noon\nPlease attend. ", "Ahmed Mohamed")
+
+ITI = Office("ITI")
+print("The office name: ",ITI.name)
+
+SamyCar = Car("fiat 128")
+print("The car name: ",SamyCar.name)
