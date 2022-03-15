@@ -24,7 +24,7 @@ def createProject(email):
     project["id"]=str(createID())
     project["userEmail"]= email
     for i in ["title", "details", "totalTarget", "startDate", "endDate"]:
-        word= input(f"please enter the {i} of the project: ")
+        word= input(f"\033[1mplease enter the {i} of the project:\033[0m ")
 
         if i in "title":
             project[i] = inputTitle(word)
@@ -35,16 +35,15 @@ def createProject(email):
         if i == "startDate":
             project[i] = inputDate(word)
             startDate = project[i]
-            print(project[i])
         if i == "endDate":
             project[i] = inputDate(word,startDate,1)
-            print(project[i])
+
     else:
-        print(project)
         with open("projects.txt", 'a') as projects:
             l = ":".join(project.values())
             l += '\n'
             projects.write(l)
+        print("\033[94mproject is saved.\033[0m")
 
 
 

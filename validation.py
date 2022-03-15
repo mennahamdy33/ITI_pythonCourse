@@ -10,7 +10,7 @@ def inputName(name):
     if name.isalpha():
         return name
     else:
-        name = input("Please enter a valid name: ")
+        name = input("\033[91mPlease enter a valid name:\033[0m ")
         return inputName(name)
 def uniqueEmail(email):
     with open("users.txt", 'r') as users:
@@ -18,7 +18,7 @@ def uniqueEmail(email):
         for userEmail in l:
             if userEmail.split(":")[2] == email:
                 print(userEmail.split(":")[2])
-                email = input("This email is used before, please use another one: ")
+                email = input("\033[91mThis email is used before, please use another one:\033[0m ")
                 return uniqueEmail(email)
         else:
             return inputEmail(email,0)
@@ -28,7 +28,7 @@ def inputEmail(email,x=1):
     if re.fullmatch(regex, email):
         return email
     else:
-        email = input("Please enter a valid email: ")
+        email = input("\033[91mPlease enter a valid email:\033[0m ")
         if x ==0:
             return uniqueEmail(email)
         else:
@@ -36,23 +36,23 @@ def inputEmail(email,x=1):
 
 
 def confirmPassword(pass1):
-    pass2 = input("please confirm the password: ")
+    pass2 = input("\033[1mplease confirm the password:\033[0m ")
     if pass1 == pass2:
         return pass1
     else:
-        pass1 = input("please renter a password: ")
+        pass1 = input("\033[1mplease renter a password:\033[0m ")
         return passwordCheck(pass1)
         # return confirmPassword(pass1)
 
 def passwordCheck(password):
     SpecialSym = ['$', '@', '#', '%','_']
     if len(password) < 6 or not any(char.isdigit() for char in password) or not any(char.isupper() for char in password) or not any(char.islower() for char in password)or not any(char in SpecialSym for char in password):
-        print('Password should be more than 6 characters and\n'
+        print('\033[91mPassword should be more than 6 characters and\n'
               ' have at least one uppercase letter,\n'
               'least one numeral,\n'
               'one lowercase letter,\n'
-              'one of the symbols $@#_')
-        password = input("please renter a password: ")
+              'one of the symbols $@#_\033[0m')
+        password = input("\033[1mplease renter a password:\033[0m ")
         return passwordCheck(password)
     return confirmPassword(password)
 def inputPhone(phone):
@@ -60,7 +60,7 @@ def inputPhone(phone):
     if re.fullmatch(regex, phone):
         return phone
     else:
-        phone = input("Please enter a valid phone number: ")
+        phone = input("\033[91mPlease enter a valid phone number:\033[0m ")
         return inputPhone(phone)
 # ################ Project Validation ####################
 def inputTitle(title):
@@ -68,16 +68,16 @@ def inputTitle(title):
     if re.fullmatch(regex, title):
         return title
     else:
-        title = input("Please enter a valid title, the title should be between 3 to 50 character,\n"
+        title = input("\033[91mPlease enter a valid title, the title should be between 3 to 50 character,\n"
                       "starts with alphabet or under score only\n"
-                      "and can contain alphabets, numbers, underscores, and white spaces : ")
+                      "and can contain alphabets, numbers, underscores, and white spaces :\033[0m ")
         return inputTitle(title)
 def inputDetails(details):
     if not details:
-        details = input("Details shouldn't be empty: ")
+        details = input("\033[91mDetails shouldn't be empty:\033[0m ")
         return inputDetails(details)
     elif ":" in details:
-        details = input("Details shouldn't contain ':' symbol : ")
+        details = input("\033[91mDetails shouldn't contain ':' symbol :\033[0m ")
         return inputDetails(details)
     return details
 def inputTarget(target):
@@ -85,8 +85,8 @@ def inputTarget(target):
     if re.fullmatch(regex, target):
         return target
     else:
-        target = input("Please enter valid total target in form number(.number)\n"
-                       "ex:100 or 10.3, 0.444: ")
+        target = input("\033[91mPlease enter valid total target in form number(.number)\n"
+                       "ex:100 or 10.3, 0.444:\033[0m ")
         return inputTarget(target)
 def inputDate(date,date1="",x=0):
     try:
@@ -96,17 +96,17 @@ def inputDate(date,date1="",x=0):
         else:
             return endDateValid(date,date1,x)
     except ValueError:
-        date = input("Please enter valid date in form YYYY-MM-DD: ")
+        date = input("\033[91mPlease enter valid date in form YYYY-MM-DD:\033[0m ")
         return inputDate(date,date1,x)
 def endDateValid(date,date1,x):
     if x==1:
         if date <= date1:
-            date = input(f"end date should be after the start date: ")
+            date = input(f"\033[91mend date should be after the start date:\033[0m ")
             return inputDate(date,date1,1)
     elif x==2:
-        print("hereeeee")
+
         if date > date1:
-            print("here")
-            date = input(f"start date should be before the end date: ")
+
+            date = input(f"\033[91mstart date should be before the end date:\033[0m ")
             return inputDate(date,date1,2)
     return date

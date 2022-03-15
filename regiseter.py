@@ -5,14 +5,13 @@ from validation import inputName, uniqueEmail, passwordCheck, inputPhone
 
 def regiseter():
     user = {}
-    print("---------Registeration---------")
+    print("\033[1m---------Registeration---------\033[0m")
     for i in ["firstName", "lastName", "email", "password", "mobilePhone"]:
-        word = input(f"please enter your {i}: ")
+        word = input(f"\033[1mplease enter your {i}:\033[0m ")
         if i in ["firstName", "lastName"]:
             user[i] = inputName(word)
         elif i == "email":
             user[i] = uniqueEmail(word)
-            print(user[i])
         if i == "password":
             user[i] = passwordCheck(word)
         if i == "mobilePhone":
@@ -22,6 +21,6 @@ def regiseter():
             l = ":".join(user.values())
             l += '\n'
             users.write(l)
-        print("Registered successfully :D ")
+        print("\033[94mRegistered successfully :D\033[0m ")
     import mainMenu
     mainMenu.menu()

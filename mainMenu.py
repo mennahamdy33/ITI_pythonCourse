@@ -4,7 +4,7 @@ import regiseter
 
 def menu():
 
-    choice = input("Please enter number of your choice: \n1. Login\n2. Regiseter\n3. Exit\n  ")
+    choice = input("\033[1mPlease enter number of your choice: \n1. Login\n2. Regiseter\n3. Exit\n \033[0m ")
 
     if inputNumber(choice):
         if choice in "123":
@@ -12,10 +12,12 @@ def menu():
                 login()
             elif choice == "2":
                 regiseter.regiseter()
-            elif choice=="3":
-                exit()
             else:
-                print("please enter a valid choice")
+                exit()
+        else:
+            print("\033[91mplease enter a valid choice\033[0m")
+    else:
+        print("\033[91mplease enter a valid choice\033[0m")
     menu()
 
 

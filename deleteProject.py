@@ -4,17 +4,15 @@ from  validation import inputNumber
 def rightID(id,lines):
     if inputNumber(id):
         for i in lines:
-            print(i[0])
-
             if id == i[0]:
                 return i
 
-    id = input("please enter a valid id of the project to edit:")
+    id = input("\033[91mplease enter a valid id of the project to edit:\033[0m")
     return rightID(id,lines)
 
 def deleteProject(email):
     if os.path.exists('projects.txt'):
-        print("{:<10} {:<20} {:<15} {:<50} {:<15} {:<10} {:<10}".format("Project ID", "User Email", "Project Title","         Details         ", "Total Target","Start Date", "End Date"))
+        print("\033[94m{:<10} {:<20} {:<15} {:<50} {:<15} {:<10} {:<10}\033[0m".format("Project ID", "User Email", "Project Title","         Details         ", "Total Target","Start Date", "End Date"))
         with open("projects.txt") as projs:
             lines=[]
             for i in projs:
@@ -24,11 +22,10 @@ def deleteProject(email):
                     l[-1] = l[-1].strip()
                     x1, x2, x3, x4, x5, x6, x7 = l
                     print(
-                        "{:<10} {:<20} {:<15} {:<50} {:<15} {:<10} {:<10}".format(f"    {x1}    ", x2, x3, x4, x5, x6, x7))
+                        "\033[92m{:<10} {:<20} {:<15} {:<50} {:<15} {:<10} {:<10}\033[0m".format(f"    {x1}    ", x2, x3, x4, x5, x6, x7))
 
-        ID = input("please enter the id of the project to delete:")
+        ID = input("\033[1mplease enter the id of the project to delete:\033[0m")
         deleteLine= rightID(ID,lines)
-        print(deleteLine)
         a_file = open("projects.txt", "r")
         lines = a_file.readlines()
         a_file.close()
@@ -38,7 +35,7 @@ def deleteProject(email):
                 new_file.write(line)
 
         new_file.close()
-
+        print("\033[94mproject is deleted.\033[0m")
 
     else:
-        print("There is no projects yet.")
+        print("\033[91mThere is no projects yet.\033[0m")

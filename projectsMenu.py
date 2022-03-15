@@ -5,7 +5,7 @@ from showProjects import showProjects
 from editProject import editProject
 from deleteProject import deleteProject
 def projectMenu(email):
-        choice = input("Please enter number of your choice: \n1. Create new project\n2. Show all projects\n3. Edit project\n4. Delete project\n5. log out\n6. Exit\n  ")
+        choice = input("\033[1mPlease enter number of your choice: \n1. Create new project\n2. Show all projects\n3. Edit project\n4. Delete project\n5. log out\n6. Exit\n \033[0m ")
 
         if inputNumber(choice):
             if choice in "123456":
@@ -23,5 +23,5 @@ def projectMenu(email):
                 elif choice == "6":
                     exit()
                 else:
-                    print("please enter a valid choice")
+                    print("\033[91mplease enter a valid choice\033[0m")
         projectMenu(email)
